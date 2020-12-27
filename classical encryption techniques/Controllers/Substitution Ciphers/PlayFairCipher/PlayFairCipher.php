@@ -117,10 +117,6 @@ class PlayFairCipher
 }
 
 
-$PlayFairCipher = new PlayFairCipher('moka','ABCDEFG');
-//$pairs = $PlayFairCipher->getPairs();
-$PlayFairCipher->fillMatrix();
-//echo $PlayFairCipher->IsExistInKey('v');
-$PlayFairCipher->ViewMatrix();
+
 //var_dump($PlayFairCipher->GetCell(0));
 

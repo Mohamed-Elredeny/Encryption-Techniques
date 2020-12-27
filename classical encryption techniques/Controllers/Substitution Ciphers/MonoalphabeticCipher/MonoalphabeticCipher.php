@@ -1,5 +1,4 @@
 <?php
-require_once '../CaesarCipher/CaesarCipher.php';
 
 class MonoalphabeticCipher
 {
@@ -55,10 +54,10 @@ class MonoalphabeticCipher
 }
 //Get Random Number from user
 //Shifts by default equal 0
-$alphaCapital = ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
+/*$alphaCapital = ['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
 $MonoalphabeticCipher = new MonoalphabeticCipher($alphaCapital);
 
 $plainText = 'fire on my orders';
-echo $MonoalphabeticCipher->CaesarCipher($plainText,0);
+echo $MonoalphabeticCipher->CaesarCipher($plainText,0);*/
 
 
