@@ -12,7 +12,13 @@ class PlayFairCipher
 
 
     private $key;
-    private $matrix = array();
+    private $matrix = array(
+        array(),
+        array(),
+        array(),
+        array(),
+        array(),
+    );
 
 
     function __construct($plainText,$key){
@@ -39,7 +45,7 @@ class PlayFairCipher
 
     function fillMatrix(){
         $counter=0;
-        while($counter != strlen($this->key)){
+        while($counter <= strlen($this->key)){
             //echo $this->key[$counter];
             $cell = $this->GetCell($counter);
             $row = $cell[0];
@@ -47,25 +53,38 @@ class PlayFairCipher
             $this->matrix[$row][$col] = $this->key[$counter];
             $counter++;
         }
+        $start = $this->GetCell($counter);
+        $row = $start[0];
+        $col = $start[1];
 
-        //$start = $this->GetCell($counter);
-        //$row = $start[0];
-        //$col = $start[1];
-
-        /*echo "<br>";
-        for ($i=0;$i<5;$i++){
-            for ($j=0;$j<5;$j++){
-                if(!$this->IsExistInKey($this->alphaCapital[$counter])){
-                    $cell = $this->GetCell($counter);
-                    $row = $cell[0];
-                    $col = $cell[1];
-                    $this->matrix[$row][$col]= $this->alphaCapital[$counter];
-                    //echo $this->alphaCapital[$counter];
+        echo "<br>";
+        for ($i=$row;$i<5;$i++){
+            if($i == $row) {
+                for ($j = $col; $j < 5; $j++) {
+                    if (!$this->IsExistInKey($this->alphaCapital[$counter])) {
+                        $cell = $this->GetCell($counter);
+                        $row = $cell[0];
+                        $col = $cell[1];
+                        $this->matrix[$row][$col] = $this->alphaCapital[$counter];
+                        //echo $this->alphaCapital[$counter];
+                    }
+                    $counter++;
                 }
-                $counter++;
+                echo "<br>";
+            }else{
+                for ($j = 0; $j < 5; $j++) {
+                    if (!$this->IsExistInKey($this->alphaCapital[$counter])) {
+                        $cell = $this->GetCell($counter);
+                        $row = $cell[0];
+                        $col = $cell[1];
+                        $this->matrix[$row][$col] = $this->alphaCapital[$counter];
+                        //echo $this->alphaCapital[$counter];
+                    }
+                    $counter++;
+                }
+                echo "<br>";
             }
-            echo "<br>";
-        }*/
+        }
     }
 
     function GetCell($number){
@@ -78,6 +97,7 @@ class PlayFairCipher
         $col =$number;
         return [$row,$col];
     }
+
     function IsExistInKey($char){
         for($i=0;$i<strlen($this->key);$i++){
             if($char == $this->key[$i]){
@@ -97,9 +117,10 @@ class PlayFairCipher
 }
 
 
-//$PlayFairCipher = new PlayFairCipher('moka','ABCDEFG');
+$PlayFairCipher = new PlayFairCipher('moka','ABCDEFG');
 //$pairs = $PlayFairCipher->getPairs();
-//$PlayFairCipher->fillMatrix();
+$PlayFairCipher->fillMatrix();
 //echo $PlayFairCipher->IsExistInKey('v');
-//$PlayFairCipher->ViewMatrix();
+$PlayFairCipher->ViewMatrix();
 //var_dump($PlayFairCipher->GetCell(0));
+
