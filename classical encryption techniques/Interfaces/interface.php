@@ -8,8 +8,8 @@ if(isset($_POST['SelectTechnique'])){
         switch ($_POST['technique']){
             case 'CaesarCipher':
                 $CaesarCipher = new CaesarCipher();
-                $plainText='moka';
-                $digit = 3;
+                $plainText=$_POST['plainText'];
+                $digit = $_POST['digit'];;
                 echo
                 "<center><h2>The Encrypted Text is : ".
                 $CaesarCipher->CaesarCipher($plainText,$digit)
