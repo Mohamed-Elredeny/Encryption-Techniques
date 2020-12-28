@@ -4,12 +4,11 @@
 class RC6{
 
     function index(){
-
         $key =$this->keySchedule("12345");
         // print_r($key);
         // print_r(blockConverter("yogi"));
         $chiper = $this->encrypt(str_pad("123456789", 16), $key);
-        echo $hasilReverseBlock = reverseBlockConverter($chiper);
+        echo $hasilReverseBlock = $this->reverseBlockConverter($chiper);
 
         $plaintext = $this->decrypt(str_pad($hasilReverseBlock, 16), $key);
         $hasilDecrypt = $this->reverseBlockConverter($plaintext);
